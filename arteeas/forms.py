@@ -32,6 +32,6 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
 
 class MusicForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
-    content = TextAreaField('Content', validators=[DataRequired()])
+    title = StringField('Author', validators=[DataRequired()])
+    content = TextAreaField('Title', validators=[DataRequired()])
     submit = SubmitField('Music')
