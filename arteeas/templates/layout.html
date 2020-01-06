@@ -11,9 +11,9 @@
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 
 	{% if title %}
-	<title>Bookees - {{ title }}</title>
+	<title>Arteeas - {{ title }}</title>
 	{% else %}
-	<title>Bookees </title>
+	<title>Arteeas </title>
 	{% endif %}
 </head>
 
@@ -22,7 +22,7 @@
 	<header class="site-header">
 		<nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
 			<div class="container">
-				<a class="navbar-brand mr-3" href="/">Bookees</a>
+				<a class="navbar-brand mr-3" href="/">Arteeas</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -64,8 +64,8 @@
 	        <!-- <h3>Navigation Sidebar</h3> -->
 	          <ul class="list-group">
 	            <!-- <li class="list-group-item list-group-item-light">Lastest posts</li> -->
-	            <li class="list-group-item list-group-item-light"><a href="{{ url_for('new_post') }}">Add a review</a></li>
-	            <li class="list-group-item list-group-item-light">My reviews</li>
+	            <li class="list-group-item list-group-item-light"><a href="{{ url_for('new_post') }}">Get a playlist</a></li>
+	            <li class="list-group-item list-group-item-light">My preference</li>
 	            <!-- <li class="list-group-item list-group-item-light">etc</li> -->
 	          </ul>
 	        </p>

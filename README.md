@@ -1,6 +1,6 @@
 # A  a book review website
 - A website that let user register and log in and allows user search and write reviews for a particular book and see the reviews made by others.
-- Bookees is a place for you note segements from books when you feel like these words entails wisdom after daily reading.
+- Arteeas generate a music of gallery list based on you prference.
 
 - Utilized Python Framework Flask to set up server, and used a third-party API by Goodreads, another book review website, to allow users browse a broader set of reviews.
 

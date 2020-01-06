@@ -35,25 +35,3 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
-
-# to do: read csv
-class Book(db.Model):
-    __tablename__ = "books"
-    isbn = db.Column(db.String, primary_key=True)
-    title = db.Column(db.String, nullable=False)
-    author = db.Column(db.String, nullable=False)
-    year = db.Column(db.Integer, nullable=False)
-
-# class Review(db.Model):
-#     __tablename__ = "reviews"
-#     user_id = db.Column(db.Integer, primary_key=True)
-#     # book_isbn = db.Column(db.String, nullable=False)
-#     comment = db.Column(db.String, nullable=False)
-#     rating = db.Column(db.Integer, nullable=False)
-#     book_id = db.Column(db.String, db.ForeignKey("books.isbn"), nullable=False)
-#
-# class Users(db.Model):
-#     __tablename__ = "users"
-#     user_id = db.Column(db.Integer, primary_key=True)
-#     user_name = db.Column(db.String, nullable=False)
-#     user_password = db.Column(db.String, nullable=False)
