@@ -5,25 +5,25 @@
 {% block heading %} {{ headline }} {% endblock %}
 
 {% block body %}
-   {% for post in posts %}
+   {% for music in musics %}
       <article class="media content-section">
         <div class="media-body">
           <div class="article-metadata">
-            <a class="mr-2" href="#">{{ post.author.username  }}</a>
-            <small class="text-muted">{{ post.date_posted }}</small>
+            <a class="mr-2" href="#">{{ music.author.username  }}</a>
+            <small class="text-muted">{{ music.date_musiced }}</small>
           </div>
-          <h2><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
-          <p class="article-content">{{ post.content }}</p>
+          <h2><a class="article-title" href="{{ url_for('music', music_id=music.id) }}">{{ music.title }}</a></h2>
+          <p class="article-content">{{ music.content }}</p>
         </div>
       </article>
    {% endfor %}
 
 <!-- Debug START -->
-   <!-- {% for post in posts %}
-      <h1>{{ post.title}}</h1>
-      <p>By {{ post.author.username }} on {{ post.date_posted }}</p>
-      <p>{{post.content}}</p>
-      <p>rating : {{post.rating}}</p>
+   <!-- {% for music in musics %}
+      <h1>{{ music.title}}</h1>
+      <p>By {{ music.author.username }} on {{ music.date_musiced }}</p>
+      <p>{{music.content}}</p>
+      <p>rating : {{music.rating}}</p>
    {% endfor %}
 
    {% for review in reviews %}
@@ -31,7 +31,7 @@
    {% endfor %} -->
 <!-- Debug END -->
 
-   <!-- <form action="{{ url_for('index') }}" method="post">
+   <!-- <form action="{{ url_for('index') }}" method="music">
        <input type="text" name="review" placeholder="Type your review here">
        <button>Add review</button>
    </form> -->

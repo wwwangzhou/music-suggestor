@@ -28,7 +28,7 @@
 ## To create database in terminal using SQLite
 - import modesl from arteeas package
 
-       from arteeas.models import User, Post
+       from arteeas.models import User, Music
 
 - create locak db file
 

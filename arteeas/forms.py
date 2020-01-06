@@ -27,11 +27,11 @@ class RegistrationForm(FlaskForm):
 class LoginForm(FlaskForm):
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()]) # just make sure to skip empty post
+    password = PasswordField('Password', validators=[DataRequired()]) # just make sure to skip empty music
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
-class PostForm(FlaskForm):
+class MusicForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
-    submit = SubmitField('Post')
+    submit = SubmitField('Music')

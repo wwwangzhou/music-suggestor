@@ -1,5 +1,5 @@
 # Before runing this file make sure you set DATABASE_URL:
-# export DATABASE_URL=postgres://eympoeyrcypiba:30c1fb7fd8e0bedf747d826d1ebc8c40039a0b2a07c3f906ee17faa90c017c37@ec2-107-22-197-30.compute-1.amazonaws.com:5432/d46pko3dnpg4bk
+# export DATABASE_URL=musicgres://eympoeyrcypiba:30c1fb7fd8e0bedf747d826d1ebc8c40039a0b2a07c3f906ee17faa90c017c37@ec2-107-22-197-30.compute-1.amazonaws.com:5432/d46pko3dnpg4bk
 
 # from flask_sqlalchemy import SQLAlchemy
 
@@ -20,18 +20,18 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
-    posts = db.relationship('Post', backref='author', lazy=True) # it runs a query on the post table and graps all posts posted by this user
+    musics = db.relationship('Music', backref='author', lazy=True) # it runs a query on the music table and graps all musics musiced by this user
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
 
-class Post(db.Model):
+class Music(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
-    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    date_musiced = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}')"
+        return f"Music('{self.title}', '{self.date_musiced}')"

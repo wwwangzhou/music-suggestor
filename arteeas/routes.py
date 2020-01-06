@@ -2,12 +2,12 @@ import os
 import secrets
 from flask import render_template, session, request, url_for, flash, redirect, request, abort
 from arteeas import app, db, bcrypt
-from arteeas.forms import RegistrationForm, LoginForm, PostForm
-from arteeas.models import User, Post
+from arteeas.forms import RegistrationForm, LoginForm, MusicForm
+from arteeas.models import User, Music
 from flask_login import login_user, current_user, logout_user, login_required
 
 # Dummy reviews
-# posts = [
+# musics = [
 #     {
 #         'user_name': 'Corey Schafer',
 #         'book_title': 'The Gangester we are looking for',
@@ -34,15 +34,15 @@ def index():
     if session.get("reviews") is None:
         session["reviews"] = []
 
-    # process post request: either add new or ignore duplicate entry
+    # process music request: either add new or ignore duplicate entry
     if request.method == "POST":
         review = request.form.get("review")
         if review not in session["reviews"]:
             session["reviews"].append(review)
-    posts=Post.query.all()
+    musics=Music.query.all()
 
     # render the hompage index.html
-    return render_template("index.html", title=title, headline=headline, posts=posts, reviews = session["reviews"])
+    return render_template("index.html", title=title, headline=headline, musics=musics, reviews = session["reviews"])
 
 # to do: add description of this website in about.html
 @app.route("/about")
@@ -95,48 +95,48 @@ def account():
 def user():
     return "User page"
 
-@app.route("/post/new", methods=['GET', 'POST'])
+@app.route("/music/new", methods=['GET', 'POST'])
 @login_required
-def new_post():
-    form = PostForm()
+def new_music():
+    form = MusicForm()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, content=form.content.data, author=current_user)
-        db.session.add(post)
+        music = Music(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(music)
         db.session.commit()
-        flash('Your post has been created!', 'success')
+        flash('Your music has been created!', 'success')
         return redirect(url_for('index'))
-    return render_template('create_post.html', title='New Post', form=form, legend='New Post')
+    return render_template('create_music.html', title='New Music', form=form, legend='New Music')
 
-@app.route("/post/<int:post_id>")
-def post(post_id):
-    post = Post.query.get_or_404(post_id) # give the post with the given id
-    return render_template('post.html', title=post.title, post=post)
+@app.route("/music/<int:music_id>")
+def music(music_id):
+    music = Music.query.get_or_404(music_id) # give the music with the given id
+    return render_template('music.html', title=music.title, music=music)
 
-@app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
-def update_post(post_id):
-    post = Post.query.get_or_404(post_id) # give the post with the given id
-    if post.author != current_user: # to do 让管理员也可以修改
+@app.route("/music/<int:music_id>/update", methods=['GET', 'POST'])
+def update_music(music_id):
+    music = Music.query.get_or_404(music_id) # give the music with the given id
+    if music.author != current_user: # to do 让管理员也可以修改
         abort(403)
-    form = PostForm()
+    form = MusicForm()
     if form.validate_on_submit():
-        post.title = form.title.data
-        post.content = form.content.data
+        music.title = form.title.data
+        music.content = form.content.data
         db.session.commit()
-        flash('Your post has been updated!', 'success')
-        return redirect(url_for('post', post_id=post.id))
+        flash('Your music has been updated!', 'success')
+        return redirect(url_for('music', music_id=music.id))
     elif request.method == 'GET':
-        form.title.data = post.title
-        form.content.data = post.content
-    return render_template('create_post.html', title='Update Post',
-                           form=form, legend='Update Post')
+        form.title.data = music.title
+        form.content.data = music.content
+    return render_template('create_music.html', title='Update Music',
+                           form=form, legend='Update Music')
 
-@app.route("/post/<int:post_id>/delete", methods=['POST'])
+@app.route("/music/<int:music_id>/delete", methods=['POST'])
 @login_required
-def delete_post(post_id):
-    post = Post.query.get_or_404(post_id)
-    if post.author != current_user:
+def delete_music(music_id):
+    music = Music.query.get_or_404(music_id)
+    if music.author != current_user:
         abort(403)
-    db.session.delete(post)
+    db.session.delete(music)
     db.session.commit()
-    flash('Your post has been deleted!', 'success')
+    flash('Your music has been deleted!', 'success')
     return redirect(url_for('index'))
