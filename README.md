@@ -1,2 +1,3 @@
-Arteeas v1.0 - a site with ideas/arteeas
-Arteeas generate a music of gallery list based on you prference.
+# About Arteeas
+- Arteeas v1.0 - arteeas are ideas
+- Arteeas generate a music of gallery list based on you prference.
