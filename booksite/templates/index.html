@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block heading %} {{ headline }} {% endblock %}
+
+{% block body %}
+   {% for post in posts %}
+      <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="#">{{ post.author.username  }}</a>
+            <small class="text-muted">{{ post.date_posted }}</small>
+          </div>
+          <h2><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
+          <p class="article-content">{{ post.content }}</p>
+        </div>
+      </article>
+   {% endfor %}
+
+<!-- Debug START -->
+   <!-- {% for post in posts %}
+      <h1>{{ post.title}}</h1>
+      <p>By {{ post.author.username }} on {{ post.date_posted }}</p>
+      <p>{{post.content}}</p>
+      <p>rating : {{post.rating}}</p>
+   {% endfor %}
+
+   {% for review in reviews %}
+      <li>{{ review }}</li>
+   {% endfor %} -->
+<!-- Debug END -->
+
+   <!-- <form action="{{ url_for('index') }}" method="post">
+       <input type="text" name="review" placeholder="Type your review here">
+       <button>Add review</button>
+   </form> -->
+{% endblock body%} # explict ending of the block
