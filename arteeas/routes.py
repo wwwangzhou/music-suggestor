@@ -9,7 +9,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 # set up the homepage
 @app.route("/", methods=["GET", "POST"])
 def index():
-    title = "bookees"
+    title = "arteeas"
     headline = "Welcome to the arteeas!"
 
     # intialize only once when making get request for the first time
