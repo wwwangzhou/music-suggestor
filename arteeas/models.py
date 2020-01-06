@@ -32,6 +32,7 @@ class Music(db.Model):
     date_musiced = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    rating = db.Column(db.Integer, nullable=False, default=5)
 
     def __repr__(self):
         return f"Music('{self.title}', '{self.date_musiced}')"

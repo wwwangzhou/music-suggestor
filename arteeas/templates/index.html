@@ -6,9 +6,8 @@
 
 {% block body %}
    {% for music in musics %}
-      <h1>{{ music.title}}</h1>
-      <p>By {{ music.author.username }} on {{ music.date_musiced }}</p>
-      <p>{{music.content}}</p>
+      <h3>{{ music.title}} - - {{music.content}}</h3>
+      <!-- <p>{{ music.author.username }} on {{ music.date_musiced }}</p> -->
       <p>rating : {{music.rating}}</p>
    {% endfor %}
 
@@ -16,9 +15,8 @@
       <li>{{ review }}</li>
    {% endfor %}
 
-
-   <!-- <form action="{{ url_for('index') }}" method="music">
-       <input type="text" name="review" placeholder="Type your review here">
-       <button>Add review</button>
-   </form>
+      <!-- <form action="{{ url_for('index') }}" method="music">
+          <input type="text" name="review" placeholder="Type your review here">
+          <button>Add a preference</button>
+      </form> -->
 {% endblock body%} # explict ending of the block
