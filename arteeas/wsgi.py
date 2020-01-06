@@ -7,7 +7,7 @@ For more information on this file, see
 https://docs.djangoproject.com/en/2.1/howto/deployment/wsgi/
 """
 
-from booksite import app
+from arteeas import app
 
 application = app
 

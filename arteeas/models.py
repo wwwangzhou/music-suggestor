@@ -5,8 +5,8 @@
 
 # db = SQLAlchemy()
 from datetime import datetime
-from booksite import db
-from booksite import login_manager
+from arteeas import db
+from arteeas import login_manager
 
 from flask_login import UserMixin
 

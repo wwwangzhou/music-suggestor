@@ -1,9 +1,9 @@
 import os
 import secrets
 from flask import render_template, session, request, url_for, flash, redirect, request, abort
-from booksite import app, db, bcrypt
-from booksite.forms import RegistrationForm, LoginForm, PostForm
-from booksite.models import User, Post
+from arteeas import app, db, bcrypt
+from arteeas.forms import RegistrationForm, LoginForm, PostForm
+from arteeas.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 
 # Dummy reviews
@@ -28,7 +28,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 @app.route("/", methods=["GET", "POST"])
 def index():
     title = "bookees"
-    headline = "Welcome to the booksite!"
+    headline = "Welcome to the arteeas!"
 
     # intialize only once when making get request for the first time
     if session.get("reviews") is None:
